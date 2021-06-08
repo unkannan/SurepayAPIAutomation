@@ -16,7 +16,7 @@ import io.restassured.specification.RequestSpecification;
 
 public class BaseEndpoints {
 	public static final int SUCCESS_STATUS_CODE = 200;
-
+	public static final int INVALID_DATA_STATUS_CODE = 200;
 	public static final int GET_REQUEST = 0;
 	public static final int POST_REQUEST = 1;
 	public static final int DELETE_REQUEST = 2;

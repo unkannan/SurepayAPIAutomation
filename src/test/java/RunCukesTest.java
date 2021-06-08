@@ -4,8 +4,8 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = {"src/test/resources"},
-		format={"pretty","html:target/reports/test-report"},
-		tags= "@smokeTest"
+		features = {"src/test/resources"},glue= {"stepdefs"},
+		format={"pretty","html:target/reports/test-report"}
+		//tags= "@negative"
 )
 public class RunCukesTest {}

@@ -8,6 +8,7 @@ import org.apache.commons.validator.routines.EmailValidator;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
@@ -36,8 +37,9 @@ public class PostedCommentsEndPoint extends BaseEndpoints{
 		assertThat(response.getStatusCode(), is(expectedCode));
 	}*/
 
-	public Response getPostedCommentById(RequestSpecification request, int id) {
+	public Response getPostedCommentById(RequestSpecification request, String id) {
 		String url = getBaseUrl() + getPostPath() + id + this.getPath() ;
+		System.out.println(url);
 		return sendRequest(request, BaseEndpoints.GET_REQUEST, url, null);
 	}
 
@@ -62,6 +64,11 @@ public class PostedCommentsEndPoint extends BaseEndpoints{
 			 //  EmailValidator validator = EmailValidator.getInstance();
 			  // System.out.println(validator.isValid(s));
 			  }
+	}
+
+	public void VerifyResponseStatus(int status_Expected) {
+		assertEquals("Expected the status Code as "+status_Expected+" but shown as "+INVALID_DATA_STATUS_CODE, status_Expected, INVALID_DATA_STATUS_CODE);
+		
 	}
 
 }
