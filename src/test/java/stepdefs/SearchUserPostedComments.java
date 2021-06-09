@@ -27,7 +27,7 @@ public class SearchUserPostedComments {
 	
 	@When("^the response status code should be \\\"([^\\\"]*)\\\"$")
 	public void searching_Posted_Comments_For_InvalidUser(int Status_Expected) { 
-		posted_comments_EndPoint.VerifyResponseStatus(Status_Expected);
+		be.verifyResponseStatusValue(world.getResponse(), Status_Expected);
 	}
 
  

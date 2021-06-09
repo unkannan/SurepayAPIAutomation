@@ -38,7 +38,7 @@ public class BaseEndpoints {
 
 	public void verifyFalse(boolean val) {
 		assertFalse(val);
-		;
+		
 	}
 
 	public void verifyResponseStatusValue(Response response, int expectedCode) {

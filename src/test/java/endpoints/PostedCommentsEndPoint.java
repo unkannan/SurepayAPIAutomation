@@ -4,6 +4,8 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import model.PostedComments;
 import stepdefs.World;
+import util.HelperClass;
+
 import org.apache.commons.validator.routines.EmailValidator;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -44,31 +46,14 @@ public class PostedCommentsEndPoint extends BaseEndpoints{
 	}
 
 	public void verifyCommentsEmailAreAsExpected(Response response) {
-		//String expectedPhotoUrls[] = pet.getPhotoUrls();
 		String idVal = response.jsonPath().getString("email");
-		System.out.println(idVal);
-		//verifyTrue(idVal != null);
-		
-		//verifyTrue(!idVal.equalsIgnoreCase(""));
-		//verifyTrue(idVal.contains("@"));
-		//boolean valid = EmailValidator.getInstance().isValid(idVal);
-		//System.out.println(valid);
-		//idVal.replaceAll("[","");
-		//idVal.replaceAll("]","");
-	
+		idVal=idVal.replace("[", "");
+		idVal=idVal.replace("]", "");
+		 
 		List < String > listToConvert = Arrays.asList(idVal.split(","));
-		 for (String s: listToConvert) {
-			 s=s.replace("[", "");
-			 s=s.replace("]", "");
-			   System.out.println(s);
-			 //  EmailValidator validator = EmailValidator.getInstance();
-			  // System.out.println(validator.isValid(s));
+		 for (String emailId: listToConvert) {
+			  verifyTrue(HelperClass.validEmail(emailId));
+			   
 			  }
 	}
-
-	public void VerifyResponseStatus(int status_Expected) {
-		assertEquals("Expected the status Code as "+status_Expected+" but shown as "+INVALID_DATA_STATUS_CODE, status_Expected, INVALID_DATA_STATUS_CODE);
-		
-	}
-
 }
